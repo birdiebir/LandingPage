@@ -1,0 +1,948 @@
+/* 自定義樣式補充 */
+.hero-gradient {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+}
+
+.section-transition {
+    position: relative;
+}
+
+.section-transition::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+}
+
+/* 響應式調整 */
+@media (max-width: 640px) {
+    .hero-content {
+        padding: 2rem 1rem;
+    }
+}
+
+/* 導航欄固定時的陰影效果 */
+nav.fixed {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Logo 大小調整 */
+.nav-logo {
+    height: 32px;
+    width: auto;
+}
+
+/* 自定義主題色 */
+:root {
+    --color-primary: #E89414;
+    --color-primary-light: #FFB84D;
+    --color-primary-lighter: #FFD699;
+    --color-primary-dark: #B37100;
+}
+
+/* 主題色類 */
+.text-primary {
+    color: var(--color-primary);
+}
+
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-primary-light {
+    background-color: var(--color-primary-light);
+}
+
+.bg-primary-lighter {
+    background-color: var(--color-primary-lighter);
+}
+
+.bg-primary-dark {
+    background-color: var(--color-primary-dark);
+}
+
+.text-primary-light {
+    color: var(--color-primary-light);
+}
+
+.hover\:bg-primary-dark:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.hover\:bg-primary-lighter:hover {
+    background-color: var(--color-primary-lighter);
+}
+
+/* 導航項目hover效果顏色 */
+.nav-item:hover {
+    border-bottom-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* 滑入動畫 */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 進度條動畫 */
+@keyframes growLine {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* 彈跳進入動畫 */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.1);
+    }
+    80% {
+        opacity: 1;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 淡入動畫 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* 動畫類別 */
+.animate-slide-up {
+    opacity: 0;
+    animation: slideUp 0.8s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+.animate-grow-line {
+    animation: growLine 1.5s ease-out forwards;
+}
+
+.animate-bounce-in {
+    opacity: 0;
+    animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* 滑動動畫 */
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutLeft {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+/* 步驟卡片基本樣式 */
+.step-card {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+}
+
+/* 活動狀態 */
+.step-card.active {
+    animation: slideInRight 0.8s forwards;
+}
+
+/* 離開狀態 */
+.step-card.leaving {
+    animation: slideOutLeft 0.8s forwards;
+}
+
+/* 隱藏狀態 */
+.step-card.hidden {
+    display: none;
+}
+
+/* 三步驟輕鬆接案樣式 */
+.steps-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.steps-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.step-card {
+    width: 100%;
+    height: 180px; /* 固定高度 */
+    position: relative;
+}
+
+.step-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.step-image-container {
+    width: 280px; /* 固定寬度 */
+    position: relative;
+    overflow: hidden;
+}
+
+.step-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.step-text {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.step-text h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.step-text p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.step-number {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+/* 懸停效果 */
+.step-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .step-content {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .step-image-container {
+        width: 100%;
+        height: 200px;
+    }
+
+    .step-card {
+        height: auto;
+    }
+}
+
+/* 確保容器內容不會溢出 */
+.section-container {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* CTA 按鈕樣式 */
+.cta-button {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white; /* 確保文字是白色 */
+    position: relative;
+    overflow: hidden;
+    z-index: 1; /* 確保按鈕內容在閃光效果之上 */
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+    z-index: -1; /* 確保閃光效果在文字之下 */
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+}
+
+.cta-button:active {
+    transform: scale(0.98);
+}
+
+/* Footer 相關樣式 */
+.social-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.social-icon:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* 發光邊框動畫 */
+@keyframes borderGlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.pricing-card-highlight {
+    position: relative;
+    background: white;
+    border-radius: 0.5rem;
+}
+
+/* 動畫邊框 */
+.pricing-card-highlight::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 0.5rem;
+    padding: 2px;
+    background: linear-gradient(
+        90deg,
+        var(--color-primary-lighter),
+        var(--color-primary),
+        var(--color-primary-dark),
+        var(--color-primary),
+        var(--color-primary-lighter)
+    );
+    background-size: 300% 100%;
+    animation: borderGlow 3s linear infinite;
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask: 
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* 確保內容在邊框之上 */
+.pricing-card-highlight > div {
+    position: relative;
+    z-index: 1;
+    background: white;
+    border-radius: 0.5rem;
+}
+
+/* 動畫效果 */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 動畫類別 */
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-rotate {
+    animation: rotate 20s linear infinite;
+}
+
+.hover-float:hover {
+    animation: float 1s ease-in-out infinite;
+}
+
+.hover-pulse:hover {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+/* 閃光效果 */
+.shimmer {
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.2) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite linear;
+}
+
+/* 滑鼠懸停特效 */
+.hover-grow {
+    transition: transform 0.3s ease;
+}
+
+.hover-grow:hover {
+    transform: scale(1.05);
+}
+
+/* 漣漪效果 */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 1s linear;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* 按鈕動畫相關樣式 */
+.btn-animate {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* 發光效果 */
+.btn-glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(232, 148, 20, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(232, 148, 20, 0.8);
+    }
+}
+
+/* 波紋效果 */
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ripple::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255,255,255,0.3);
+    transform: scale(0);
+    opacity: 0;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+}
+
+.btn-ripple:active::after {
+    transform: scale(2);
+    opacity: 0;
+    transition: 0s;
+}
+
+/* 懸浮效果 */
+.btn-float {
+    transition: transform 0.3s ease;
+}
+
+.btn-float:hover {
+    transform: translateY(-4px);
+}
+
+/* 脈衝效果 */
+.btn-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* 滑動邊框效果 */
+.btn-border-slide {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-border-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #E89414, #FFB84D, #E89414);
+    background-size: 200% 100%;
+    z-index: -1;
+    animation: borderSlide 3s linear infinite;
+}
+
+@keyframes borderSlide {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+/* 主題館卡片樣式 */
+.theme-card {
+    transition: all 0.3s ease-in-out;
+    background: white;
+    overflow: hidden;
+}
+
+.theme-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.theme-card .image-overlay {
+    transition: all 0.3s ease-in-out;
+}
+
+.theme-card:hover .image-overlay {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* 排行榜卡片樣式 */
+.ranking-card {
+    transition: all 0.3s ease-in-out;
+}
+
+.ranking-card:hover {
+    transform: translateY(-10px);
+}
+
+.ranking-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 3rem;
+    height: 3rem;
+    background: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 統計數字動畫 */
+.stat-number {
+    transition: all 0.3s ease-in-out;
+}
+
+.stat-number.animate {
+    transform: scale(1.1);
+}
+
+/* 媒合流程卡片樣式 */
+.feature-card {
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* 圖標容器樣式 */
+.icon-container {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: var(--color-primary-lighter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem auto;
+    transition: all 0.3s ease-in-out;
+}
+
+.feature-card:hover .icon-container {
+    transform: scale(1.1);
+    background: var(--color-primary);
+}
+
+.feature-card:hover .icon-container svg {
+    color: white;
+}
+
+/* 漸變背景效果 */
+.gradient-bg {
+    background: linear-gradient(135deg, var(--color-primary-lighter) 0%, var(--color-primary-light) 100%);
+}
+
+/* 動畫效果 */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-in {
+    animation: slideIn 0.6s ease-out forwards;
+}
+
+/* 延遲動畫 */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+
+/* 主題館圖片漸變效果 */
+.theme-image {
+    transition: all 0.5s ease-in-out;
+}
+
+.theme-card:hover .theme-image {
+    transform: scale(1.1);
+}
+
+/* 成功案例卡片特效 */
+.success-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.success-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.success-card:hover::after {
+    left: 100%;
+}
+
+/* 數據展示動畫 */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-count {
+    animation: countUp 0.6s ease-out forwards;
+}
+
+/* 特色功能圖標動畫 */
+.feature-icon {
+    transition: all 0.3s ease-in-out;
+}
+
+.feature-card:hover .feature-icon {
+    transform: rotate(360deg);
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .theme-card {
+        margin-bottom: 2rem;
+    }
+    
+    .ranking-card {
+        margin-bottom: 2rem;
+    }
+    
+    .feature-card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* 漸變文字效果 */
+.gradient-text {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+/* 卡片陰影效果 */
+.hover-shadow {
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* 圖標懸浮效果 */
+.icon-hover {
+    transition: all 0.3s ease-in-out;
+}
+
+.icon-hover:hover {
+    transform: translateY(-5px);
+    color: var(--color-primary);
+}
+
+/* 按鈕特效 */
+.btn-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-effect::after {
+}
+
+/* 系統功能卡片特效 */
+.feature-system-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: linear-gradient(145deg, #ffffff, #f3f4f6);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+}
+
+.feature-system-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(232, 148, 20, 0.1),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.feature-system-card:hover::before {
+    left: 100%;
+}
+
+.feature-system-card:hover {
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.15);
+}
+
+.feature-system-card:hover .feature-system-icon div {
+    background-color: var(--color-primary);
+}
+
+.feature-system-card:hover .feature-system-icon svg {
+    color: white;
+    transform: rotate(360deg);
+}
+
+/* 功能列表項目特效 */
+.feature-item {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    background-color: rgba(232, 148, 20, 0.1);
+    transform: translateX(10px);
+}
+
+.feature-item:hover .feature-icon {
+    transform: scale(1.2);
+    color: var(--color-primary-dark);
+}
+
+.feature-icon {
+    transition: all 0.3s ease;
+}
+
+/* 進入動畫 */
+@keyframes slideInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feature-list li {
+    animation: slideInFromBottom 0.5s ease forwards;
+    opacity: 0;
+}
+
+.feature-list li:nth-child(1) { animation-delay: 0.1s; }
+.feature-list li:nth-child(2) { animation-delay: 0.2s; }
+.feature-list li:nth-child(3) { animation-delay: 0.3s; }
+
+/* 按鈕容器樣式 */
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* 將按鈕靠右對齊 */
+    gap: 0.5rem; /* 按鈕之間的間距 */
+}
